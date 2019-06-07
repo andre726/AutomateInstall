@@ -1,0 +1,9 @@
+#TODO git ignore file
+
+#folder to ignore
+**/.vscode
+**/__pycache__
+*.xml
+**/.idea
+*.iml
+*.json
