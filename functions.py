@@ -3,7 +3,7 @@
 import os
 import sqlite3
 import distro
-
+#TODO : Update system to go with json files and not db system.
 
 def installationdevelopper():
     ''' Installation de logiciel spécifique au developpeur'''
