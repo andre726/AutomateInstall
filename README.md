@@ -7,7 +7,10 @@ Le programme est constituer d'une base de données Sqlite et vous permet d'écri
 
 ## Lancement de l'application
 1) Installer distro avec ```pip3 install distro```
-2) Lancer la commande ```python3 Main.py```
+2) Utiliser un utilitaire graphique pour remplir la base de donnée des logiciels que vous souhaitez installer
+ou alors utiliser la fonction dans le script
+3) Lancer la commande ```python3 Main.py```
+4) Suivez les instructions dans le terminal
 
 
 ## Pour tout retour n'hésitez pas à revenir vers moi.
