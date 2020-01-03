@@ -5,16 +5,16 @@ import sqlite3
 import distro
 
 
-def installationdevelopper():
+def installationflatpak():
     ''' Installation de logiciel spécifique au developpeur'''
-    liste_flatpak = ["cc.arduino.arduinoide", "com.github.alecaddd.sequeler", "com.jetbrains.PyCharm-Community",
-                     "com.obsproject.Studio",
+    liste_flatpak = ["com.jetbrains.PyCharm-Community",
                      "com.slack.Slack",
                      "com.spotify.Client",
                      "io.dbeaver.DBeaverCommunity",
-                     "org.fedoraproject.MediaWriter",
-                     "org.freecadweb.FreeCAD",
-                     "org.signal.Signal"]
+                     "org.signal.Signal","org.telegram.desktop",
+                     "com.visualstudio.code.oss"
+                     #ajouter discord
+                     ]
     for i in liste_flatpak:
             os.system("flatpak install "+i)
 
@@ -41,13 +41,7 @@ def ajouteindb(soft):
     cursor.close()
 
 
-def installadmin():
-    ''' installation spécifique au admin sys'''
-    cmdinstall = install_cmd()
-    installbase(cmdinstall)
-    softwareadmin = ["lnav", "iptraf-ng", "certbot", "lftp"]
-    for i in softwareadmin:
-        os.system(cmdinstall+i)
+
 
 
 def supprimer(logiciel):
