@@ -135,4 +135,4 @@ def os_distribution():
 
 
 def install_zsh():
-    os.system(".install_zsh")
+    os.system("./install_zsh")
