@@ -132,3 +132,7 @@ def os_distribution():
         return osdistribution
     else:
         return "il doit y avoir une erreur" 
+
+
+def install_zsh():
+    os.system(".install_zsh")

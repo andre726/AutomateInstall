@@ -15,6 +15,7 @@ while choix!=4:
         poste=input("votre choix : ")
         if poste =="base":
             functions.installbase(cmdinstall)
+            functions.install_zsh()
         elif poste=="développeur":
             functions.installbase(cmdinstall)
             functions.installationdevelopper()
