@@ -7,7 +7,7 @@ import distro
 
 def installationflatpak():
     ''' Installation de logiciel spécifique au developpeur'''
-    liste_flatpak = ["com.jetbrains.PyCharm-Community",
+    liste_flatpak = [
                      "com.slack.Slack",
                      "com.spotify.Client",
                      "io.dbeaver.DBeaverCommunity",
@@ -24,7 +24,7 @@ def installbase(cmdinstall):
     conn = sqlite3.connect('db.sqlite')
     cursor = conn.cursor()
     distrotype = os_distribution()
-    sqlrequest= 'SELECT * FROM '+distrotype+' ORDER BY Logiciel'
+    sqlrequest= 'SELECT * FROM Software ORDER BY Logiciel'
     
     for row in cursor.execute(sqlrequest):
         os.system(install_cmd()+" "+row[0])
@@ -36,7 +36,7 @@ def ajouteindb(soft):
 
     conn = sqlite3.connect('db.sqlite')
     cursor = conn.cursor()
-    cursor.execute("""INSERT INTO Ubuntu(Logiciel) VALUES(?);""", (soft,))
+    cursor.execute("""INSERT INTO Software(Logiciel) VALUES(?);""", (soft,))
     conn.commit()
     cursor.close()
 
@@ -114,6 +114,7 @@ def os_distribution():
     '''détermine le système linux utiliser afin d'avoir le bon nom de la table dans la bdd'''
     distrotype = distro.linux_distribution()
     systeme = distrotype[0]
+
     
     if systeme == "Linux Mint" or systeme == "Debian" or systeme == "Ubuntu":
         osdistribution = 'Ubuntu'
