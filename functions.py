@@ -2,15 +2,12 @@
 
 import os
 import sqlite3
-import distro
-
 
 def installationflatpak():
-    ''' Installation de logiciel spécifique au developpeur'''
+    ''' Installation de logiciel via flatpak'''
     liste_flatpak = [
                      "com.slack.Slack",
                      "com.spotify.Client",
-                     "io.dbeaver.DBeaverCommunity",
                      "org.signal.Signal","org.telegram.desktop",
                      "com.visualstudio.code.oss"
                      #ajouter discord
@@ -19,15 +16,14 @@ def installationflatpak():
             os.system("flatpak install "+i)
 
 
-def installbase(cmdinstall):
+def installbase(installcmd):
     ''' Installation des logiciel de base'''
     conn = sqlite3.connect('db.sqlite')
     cursor = conn.cursor()
-    distrotype = os_distribution()
     sqlrequest= 'SELECT * FROM Software ORDER BY Logiciel'
     
     for row in cursor.execute(sqlrequest):
-        os.system(install_cmd()+" "+row[0])
+        os.system(installcmd+" "+row[0])
         
 
 
@@ -48,7 +44,7 @@ def supprimer(logiciel):
     '''Permet de supprimer un logiciel de la base de données'''
     conn = sqlite3.connect("db.sqlite")
     cursor = conn.cursor()
-    sqlrequest = "DELETE FROM "+os_distribution()+ " WHERE Logiciel = ?"
+    sqlrequest = "DELETE FROM Software WHERE Logiciel = ?"
     cursor.execute(sqlrequest, (logiciel,))
     conn.commit()
     conn.close()
@@ -84,49 +80,13 @@ CREATE TABLE IF NOT EXISTS Manjaro(
 
 
 def showcontent():
-    """montre ce qu'il y dans la base de données"""
+    """affiche ce qu'il y a dans la base de données"""
     conn = sqlite3.connect('db.sqlite')
     cursor = conn.cursor()
-    sqlrequest = "SELECT * FROM "+ os_distribution()+ " ORDER BY Logiciel"
+    sqlrequest = "SELECT * FROM  Software ORDER BY Logiciel"
     for row in cursor.execute(sqlrequest):
+         print(row)
 
-        return row
-
-
-def install_cmd():
-    '''détermine le système linux utiliser afin d'utiliser la bonne commande d'installation'''
-    distrotype = distro.linux_distribution()
-    systeme = distrotype[0]
-    
-    if systeme == "Linux Mint" or systeme == "Debian" or systeme == "Ubuntu":
-        install = 'sudo apt install'
-        return install
-    elif systeme == "Manjaro" or "Arch Linux":
-        install = " sudo pamac -S"
-        return install
-    elif systeme == "CentOS" or "Fedora":
-        install = "sudo dnf install"
-        return install
-    else:
-        return "il doit y avoir une erreur"
-
-def os_distribution():
-    '''détermine le système linux utiliser afin d'avoir le bon nom de la table dans la bdd'''
-    distrotype = distro.linux_distribution()
-    systeme = distrotype[0]
-
-    
-    if systeme == "Linux Mint" or systeme == "Debian" or systeme == "Ubuntu":
-        osdistribution = 'Ubuntu'
-        return osdistribution
-    elif systeme == "Manjaro" or "Arch Linux":
-        osdistribution = " Manjaro"
-        return osdistribution
-    elif systeme == "CentOS" or "Fedora":
-        osdistribution = "sudo dnf install"
-        return osdistribution
-    else:
-        return "il doit y avoir une erreur" 
 
 
 def install_zsh():
