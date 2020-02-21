@@ -3,6 +3,7 @@
 import os
 import sqlite3
 
+
 def installationflatpak():
     ''' Installation de logiciel via flatpak'''
     liste_flatpak = [

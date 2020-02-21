@@ -14,3 +14,7 @@ ou alors utiliser la fonction dans le script
 
 
 ## Pour tout retour n'hésitez pas à revenir vers moi.
+
+## Crédits pour le code ZSH
+Auteur : Michael Hertens
+lien vers sa documentation : https://wiki.tronyxworld.be/

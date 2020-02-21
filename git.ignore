@@ -1,8 +1,0 @@
-
-#folder to ignore
-**/.vscode
-**/__pycache__
-
-**/.idea
-
-*.json

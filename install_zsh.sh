@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 sudo apt install -y zsh git curl
 sudo chsh -s /usr/bin/zsh andre
 # Installation des fonts
