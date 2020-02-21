@@ -55,26 +55,10 @@ def creadb():
     conn = sqlite3.connect('db.sqlite')
     cursor = conn.cursor()
     cursor.execute("""
-CREATE TABLE IF NOT EXISTS Ubuntu(
-     Logiciel TEXT,
-     Adresse TEXT,
-     Commande TEXT
-)
+CREATE TABLE IF NOT EXISTS Software(
+     Logiciel TEXT)
 """)
-    cursor.execute("""
-CREATE TABLE IF NOT EXISTS Fedora(
-     Logiciel TEXT,
-     Adresse TEXT,
-     Commande TEXT
-)
-""")
-    cursor.execute("""
-CREATE TABLE IF NOT EXISTS Manjaro(
-     Logiciel TEXT,
-     Adresse TEXT,
-     Commande TEXT
-)
-""")
+
     conn.commit()
     conn.close()
 
