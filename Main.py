@@ -15,6 +15,7 @@ while choix!=4:
         installateur= input("commande de votre installateur : ")
         functions.installbase(installateur)
         functions.install_zsh()
+        functions.installationflatpak()
     elif choix ==2:
         logiciel =input("quel logiciel souhaitez vous ajouter?: ")
         functions.ajouteindb(logiciel)

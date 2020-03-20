@@ -10,11 +10,12 @@ def installationflatpak():
                      "com.slack.Slack",
                      "com.spotify.Client",
                      "org.signal.Signal","org.telegram.desktop",
-                     "com.visualstudio.code.oss"
-                     #ajouter discord
+                    "com.discordapp.Discord",
+                    "io.dbeaver.DBeaverCommunity"
+
                      ]
     for i in liste_flatpak:
-            os.system("flatpak install "+i)
+            os.system("flatpak install flathub"+i)
 
 
 def installbase(installcmd):
