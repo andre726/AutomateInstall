@@ -77,3 +77,5 @@ def showcontent():
 
 def install_zsh():
     os.system("./install_zsh")
+#TODO Ajouter une fonction afin de lire juste le contenu d"un fichier texte pour installer les logiciels qui sont nécéssaire
+#TODO Supprimé tout ce qui est en rapport avec la base de données et crée un fichier pour les serveurs
