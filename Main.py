@@ -4,6 +4,7 @@ import functions
 functions.creadb()
 choix = 0
 functions.showcontent()
+functions.soft_to_install()
 
 
 

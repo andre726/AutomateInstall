@@ -1,34 +1,30 @@
 # -*- coding: utf-8 -*-
 
 import os
-import sqlite3
+
 
 
 def installationflatpak():
     ''' Installation de logiciel via flatpak'''
     liste_flatpak = [
-                     "com.slack.Slack",
-                     "com.spotify.Client",
-                     "org.signal.Signal","org.telegram.desktop",
-                    "com.discordapp.Discord",
-                    "io.dbeaver.DBeaverCommunity"
 
-                     ]
+        "com.spotify.Client",
+        "org.signal.Signal",
+        "com.discordapp.Discord",
+        "io.dbeaver.DBeaverCommunity"
+
+    ]
     for i in liste_flatpak:
-            os.system("flatpak install flathub"+i)
+        os.system("flatpak install flathub" + i)
 
 
 def installbase(installcmd):
     ''' Installation des logiciel de base'''
-    conn = sqlite3.connect('db.sqlite')
-    cursor = conn.cursor()
-    sqlrequest= 'SELECT * FROM Software ORDER BY Logiciel'
-    
-    for row in cursor.execute(sqlrequest):
-        os.system(installcmd+" "+row[0])
-        
+    software = soft_to_install()
+    for i in software:
+        os.system("sudo apt instal "+i)
 
-
+##fonction à supprimé car tout se fait dans le fichier texte.
 def ajouteindb(soft):
     '''permet d'ajouter un logiciel dans la db'''
 
@@ -42,44 +38,23 @@ def ajouteindb(soft):
 
 
 
-def supprimer(logiciel):
-    '''Permet de supprimer un logiciel de la base de données'''
-    conn = sqlite3.connect("db.sqlite")
-    cursor = conn.cursor()
-    sqlrequest = "DELETE FROM Software WHERE Logiciel = ?"
-    cursor.execute(sqlrequest, (logiciel,))
-    conn.commit()
-    conn.close()
-
-
-def creadb():
-    '''création de la base de donnée avec les différente tables et colone'''
-    conn = sqlite3.connect('db.sqlite')
-    cursor = conn.cursor()
-    cursor.execute("""
-CREATE TABLE IF NOT EXISTS Software(
-     Logiciel TEXT)
-""")
-
-    conn.commit()
-    conn.close()
 
 
 def showcontent():
-    """affiche ce qu'il y a dans la base de données"""
-    conn = sqlite3.connect('db.sqlite')
-    cursor = conn.cursor()
-    sqlrequest = "SELECT * FROM  Software ORDER BY Logiciel"
-    for row in cursor.execute(sqlrequest):
-         print(row)
-
+    """affiche ce qu'il y a dans le fichiers texte"""
+   file = open("Software.txt", "r")
+   return file.read()
 
 
 def install_zsh():
     os.system("./install_zsh")
 
+
 def soft_to_install():
-    file=os.open("Software.txt","r")
-    print(type(file.read()))
-#TODO Ajouter une fonction afin de lire juste le contenu d"un fichier texte pour installer les logiciels qui sont nécéssaire
-#TODO Supprimé tout ce qui est en rapport avec la base de données et crée un fichier pour les serveurs
+    file = open("Software.txt","r")
+
+
+    list_software = file.read().split()
+    return list_software
+# TODO Ajouter une fonction afin de lire juste le contenu d"un fichier texte pour installer les logiciels qui sont nécéssaire
+# TODO Supprimé tout ce qui est en rapport avec la base de données et crée un fichier pour les serveurs
