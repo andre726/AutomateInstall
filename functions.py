@@ -9,7 +9,7 @@ def installationflatpak():
     liste_flatpak = [
                      "com.slack.Slack",
                      "com.spotify.Client",
-                     "org.signal.Signal","org.telegram.desktop",
+                     "org.signal.Signal",
                      "com.visualstudio.code.oss"
                      #ajouter discord
                      ]
@@ -75,4 +75,6 @@ def showcontent():
 
 
 def install_zsh():
-    os.system("./install_zsh")
+    #ajout du script de mickael afin de l'automatisé
+    print("pas encore fini")
+    

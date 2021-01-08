@@ -7,6 +7,7 @@ functions.showcontent()
 
 
 
+
 while choix!=4:
     print("Script d'installation logiciel, que voulez vous faire? \n choississez 1 pour installez tout les logiciel \n choissisez 2 pour ajouter une logiciel dans la base de donnée \n choissiez 3 pour supprimé un logiciel de la  base de donnée \n choississez 4 pour afficher la liste des logiciel dans la base de données \n choissisez  5 pour quitter")
     choix = int(input("votre choix : "))
