@@ -1,0 +1,11 @@
+
+clipit
+filezilla
+htop
+ncdu
+neofetch
+sqlitebrowser
+sublime-text
+tilix
+vlc
+zsh
